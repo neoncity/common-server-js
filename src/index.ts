@@ -1,4 +1,10 @@
+import { execSync } from 'child_process'
 import * as express from 'express'
+
+
+export function startupMigration() {
+    execSync('./node_modules/.bin/knex migrate:latest');    
+}
 
 
 export function newCorsMiddleware(clients: string[]): express.RequestHandler {

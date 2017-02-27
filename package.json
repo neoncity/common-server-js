@@ -1,6 +1,6 @@
 {
   "name": "@neoncity/common-server-js",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Things shared between packages, for server-side work.",
   "author": "NeonCity team",
   "scripts": {
