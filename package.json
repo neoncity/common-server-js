@@ -1,6 +1,6 @@
 {
   "name": "@neoncity/common-server-js",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Things shared between packages, for server-side work.",
   "author": "NeonCity team",
   "scripts": {
@@ -30,21 +30,21 @@
   },
   "license": "UNLICENSED",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "=4.14.0"
   },
   "devDependencies": {
-    "@neoncity/togemfury": "^0.0.9",
-    "@types/chai": "^3.4.34",
-    "@types/express": "^4.0.34",
-    "@types/istanbul": "^0.4.29",
-    "@types/mocha": "^2.2.38",
-    "@types/node": "^7.0.0",
-    "chai": "^3.5.0",
-    "codecov": "^1.0.1",
-    "coverage-filter": "^0.0.2",
-    "istanbul": "^0.4.5",
-    "mocha": "^3.2.0",
-    "remap-istanbul": "^0.8.4",
+    "@neoncity/togemfury": "=0.0.9",
+    "@types/chai": "=3.4.34",
+    "@types/express": "=4.0.34",
+    "@types/istanbul": "=0.4.29",
+    "@types/mocha": "=2.2.38",
+    "@types/node": "=7.0.0",
+    "chai": "=3.5.0",
+    "codecov": "=1.0.1",
+    "coverage-filter": "=0.1.0",
+    "istanbul": "=0.4.5",
+    "mocha": "=3.2.0",
+    "remap-istanbul": "=0.8.4",
     "typescript": "=2.1.5"
   }
 }
