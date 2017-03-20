@@ -6,12 +6,21 @@ import { AuthInfo } from '@neoncity/identity-sdk-js'
 
 
 export interface Request extends express.Request {
+    requestTime: Date;
     authInfo: AuthInfo|null;
 }
 
 
 export function startupMigration() {
     execSync('./node_modules/.bin/knex migrate:latest');    
+}
+
+
+export function newRequestTimeMiddleware(): express.RequestHandler {
+    return function(req: Request, _: express.Response, next: express.NextFunction): any {
+	req.requestTime = new Date(Date.now());
+	next();
+    }
 }
 
 
