@@ -20,6 +20,12 @@ export function newCorsMiddleware(clients: string[]): express.RequestHandler {
 	res.header('Access-Control-Allow-Headers', 'X-NeonCity-AuthInfo, Content-Type'); // TODO: make this better
 	res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE'); // TODO: make this better
 
+        if (req.method == 'OPTIONS') {
+            res.status(204);
+            res.end();
+            return;
+        }
+
 	// Fire away.
 	next();	
     };
