@@ -1,4 +1,5 @@
 import * as express from 'express'
+import * as HttpStatus from 'http-status-codes'
 import { MarshalFrom } from 'raynor'
 
 import { AuthInfo } from '@neoncity/identity-sdk-js'
@@ -23,7 +24,7 @@ export function newAuthInfoMiddleware(): express.RequestHandler {
 	try {
 	    req.authInfo = authInfoMarshaller.extract(JSON.parse(authInfoSerialized));
 	} catch (e) {
-	    res.status(400);
+	    res.status(HttpStatus.BAD_REQUEST);
 	    res.end();
 	    return;
 	}
