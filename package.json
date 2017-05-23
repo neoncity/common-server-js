@@ -1,6 +1,6 @@
 {
   "name": "@neoncity/common-server-js",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Things shared between packages, for server-side work.",
   "author": "NeonCity team",
   "scripts": {
@@ -30,10 +30,10 @@
   },
   "license": "UNLICENSED",
   "dependencies": {
-    "@neoncity/identity-sdk-js": "~1",
+    "@neoncity/identity-sdk-js": "~2",
     "express": "=4.14.0",
     "http-status-codes": "=1.1.6",
-    "raynor": "=0.7.2"
+    "raynor": "=0.8.0"
   },
   "devDependencies": {
     "@neoncity/togemfury": "~0",
