@@ -38,7 +38,11 @@ export function newAuthInfoMiddleware(authInfoLevel: AuthInfoLevel) {
 	    if (req.cookies[AuthInfo.CookieName] != undefined) {
 		authInfoSerialized = req.cookies[AuthInfo.CookieName];
 	    } else if (req.header(AuthInfo.HeaderName) != undefined) {
-		authInfoSerialized = req.header(AuthInfo.HeaderName);
+		try {
+		    authInfoSerialized = JSON.parse(req.header(AuthInfo.HeaderName));
+		} catch (e) {
+		    authInfoSerialized = null;
+		}
 	    }
 
 	    if (authInfoSerialized == null) {
@@ -58,7 +62,7 @@ export function newAuthInfoMiddleware(authInfoLevel: AuthInfoLevel) {
 
 	    let authInfo: AuthInfo|null = null;
 	    try {
-		authInfo = authInfoMarshaller.extract(JSON.parse(authInfoSerialized));
+		authInfo = authInfoMarshaller.extract(authInfoSerialized);
 	    } catch (e) {
 		console.log('Bad auth info');
 		res.status(HttpStatus.BAD_REQUEST);
