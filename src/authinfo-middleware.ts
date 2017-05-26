@@ -8,10 +8,6 @@ import { AuthInfo } from '@neoncity/identity-sdk-js'
 import { Request } from './request'
 
 
-const AUTH_INFO_COOKIE_NAME = 'neoncity-authinfo';
-const AUTH_INFO_HEADER_NAME = 'X-NeonCity-AuthInfo';
-
-
 export enum AuthInfoLevel {
     None = 0,
     SessionId = 1,
@@ -39,10 +35,10 @@ export function newAuthInfoMiddleware(authInfoLevel: AuthInfoLevel) {
 	cookieParserMiddleware(req, res, () => {
 	    let authInfoSerialized: string|null = null;
 	    
-	    if (req.cookies[AUTH_INFO_COOKIE_NAME] != undefined) {
-		authInfoSerialized = req.cookies[AUTH_INFO_COOKIE_NAME];
-	    } else if (req.header(AUTH_INFO_HEADER_NAME) != undefined) {
-		authInfoSerialized = req.cookies[AUTH_INFO_COOKIE_NAME];
+	    if (req.cookies[AuthInfo.CookieName] != undefined) {
+		authInfoSerialized = req.cookies[AuthInfo.CookieName];
+	    } else if (req.header(AuthInfo.HeaderName) != undefined) {
+		authInfoSerialized = req.header(AuthInfo.HeaderName);
 	    }
 
 	    if (authInfoSerialized == null) {
