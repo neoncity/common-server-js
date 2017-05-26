@@ -20,6 +20,7 @@ export function newCorsMiddleware(clients: string[]): express.RequestHandler {
 	// Headers allowed for now.
 	res.header('Access-Control-Allow-Headers', 'X-NeonCity-AuthInfo, Content-Type'); // TODO: make this better
 	res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE'); // TODO: make this better
+	res.header('Access-Control-Allow-Credentials', 'true');
 
         if (req.method == 'OPTIONS') {
             res.status(HttpStatus.NO_CONTENT);
