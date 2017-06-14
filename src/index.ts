@@ -1,4 +1,5 @@
 export * from './authinfo-middleware'
+export * from './check-origin-middleware'
 export * from './json-content-middleware'
 export * from './migrations'
 export * from './request'
