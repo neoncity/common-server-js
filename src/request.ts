@@ -7,4 +7,5 @@ export interface Request extends express.Request {
     requestTime: Date;
     authInfo: AuthInfo|null;
     session: Session|null;
+    xsrfToken: string|null;
 }
