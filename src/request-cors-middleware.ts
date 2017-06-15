@@ -1,7 +1,7 @@
 import * as express from 'express'
 import * as HttpStatus from 'http-status-codes'
 
-import { AuthInfo } from '@neoncity/identity-sdk-js'
+import { AuthInfo, Session } from '@neoncity/identity-sdk-js'
 
 import { Request } from './request'
 
@@ -10,7 +10,7 @@ export function newCorsMiddleware(clients: string[], methods: string[], headers:
     const maxAgeInSeconds = 86400; // A full day
     const localClients = clients.slice(0);
     const localMethods = ['OPTIONS'].concat(methods).join(',');
-    const localHeaders = [AuthInfo.HeaderName, 'Content-Type'].concat(headers).join(',');
+    const localHeaders = [AuthInfo.HeaderName, Session.XsrfTokenHeaderName, 'Content-Type'].concat(headers).join(',');
     
     return function(req: Request, res: express.Response, next: express.NextFunction): any {
         // Fill in Access-Control-Allow-Origin header. If origin is one of the allowed ones we emit
