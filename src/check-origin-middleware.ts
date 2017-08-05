@@ -8,7 +8,7 @@ export function newCheckOriginMiddleware(clients: string[]) {
     const localClients = clients.slice(0);
     
     return function(req: Request, res: express.Response, next: express.NextFunction): any {
-        const origin = req.header('Origin');
+        const origin = req.header('Origin') as string;
 
         if (localClients.indexOf(origin) == -1) {
             console.log('Origin is not allowed');

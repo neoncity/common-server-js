@@ -39,7 +39,7 @@ export function newAuthInfoMiddleware(authInfoLevel: AuthInfoLevel) {
 		authInfoSerialized = req.cookies[AuthInfo.CookieName];
 	    } else if (req.header(AuthInfo.HeaderName) != undefined) {
 		try {
-		    authInfoSerialized = JSON.parse(req.header(AuthInfo.HeaderName));
+		    authInfoSerialized = JSON.parse(req.header(AuthInfo.HeaderName) as string);
 		} catch (e) {
 		    authInfoSerialized = null;
 		}

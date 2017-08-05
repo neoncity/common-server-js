@@ -17,7 +17,7 @@ export function newCorsMiddleware(clients: string[], methods: string[], headers:
         // an Access-Control-Allow-Origin header, with the specific origin. This is because a single
         // origin is allowed, though clients might consist of multiple origins. Otherwise, we omit
         // it, and the resource won't be accessible in a CORS setting.
-        const origin = req.header('Origin');
+        const origin = req.header('Origin') as string;
 
         if (localClients.indexOf(origin) != -1) {
             res.header('Access-Control-Allow-Origin', origin);
