@@ -15,7 +15,7 @@ export enum SessionLevel {
 }
 
 
-export function newSessionMiddleware(sessionLevel: SessionLevel, env: Env, origin: string, identityClient: IdentityClient): express.RequestHandler {
+export function newSessionMiddleware(sessionLevel: SessionLevel, env: Env, identityClient: IdentityClient): express.RequestHandler {
 
     let mustHaveSession = false;
     let mustHaveUser = false;
@@ -48,9 +48,9 @@ export function newSessionMiddleware(sessionLevel: SessionLevel, env: Env, origi
 	    if (req.authInfo == null) {
 		req.session = null;
 	    } else if (req.authInfo.auth0AccessToken == null) {
-		req.session = await identityClient.withContext(req.authInfo as AuthInfo, origin).getSession();
+		req.session = await identityClient.withContext(req.authInfo as AuthInfo).getSession();
 	    } else {
-		req.session = await identityClient.withContext(req.authInfo as AuthInfo, origin).getUserOnSession();
+		req.session = await identityClient.withContext(req.authInfo as AuthInfo).getUserOnSession();
 	    }
 	} catch (e) {
 	    // TODO: should probably log something here.
