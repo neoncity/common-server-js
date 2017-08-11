@@ -5,7 +5,7 @@ import { AuthInfo, Session } from '@neoncity/identity-sdk-js'
 
 export interface Request extends express.Request {
     requestTime: Date;
-    authInfo: AuthInfo|null;
-    session: Session|null;
-    xsrfToken: string|null;
+    authInfo: AuthInfo | null;
+    session: Session | null;
+    xsrfToken: string | null;
 }

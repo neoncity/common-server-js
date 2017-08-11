@@ -8,7 +8,7 @@ import { Request } from './request'
 
 export function newCheckXsrfTokenMiddleware(justExtract: boolean = false) {
     const xsrfTokenMarshaller = new XsrfTokenMarshaller();
-    
+
     return function(req: Request, res: express.Response, next: express.NextFunction): any {
         try {
             const xsrfTokenRaw = req.header(Session.XsrfTokenHeaderName);
