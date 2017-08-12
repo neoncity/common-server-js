@@ -1,6 +1,6 @@
 {
   "name": "@neoncity/common-server-js",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "Things shared between packages, for server-side work.",
   "author": "NeonCity team",
   "scripts": {
@@ -31,7 +31,7 @@
   "license": "UNLICENSED",
   "dependencies": {
     "@neoncity/common-js": "~1",
-    "@neoncity/identity-sdk-js": "~5",
+    "@neoncity/identity-sdk-js": "~6",
     "async-middleware": "=1.0.2",      
     "cookie-parser": "=1.4.3",
     "express": "=4.14.0",
