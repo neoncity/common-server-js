@@ -11,7 +11,7 @@ export function newCheckOriginMiddleware(clients: string[]) {
         const origin = req.header('Origin') as string;
 
         if (localClients.indexOf(origin) == -1) {
-            console.log('Origin is not allowed');
+            req.log.warn('Origin is not allowed');
             res.status(HttpStatus.BAD_REQUEST);
             res.end();
             return;

@@ -46,7 +46,7 @@ export function newAuthInfoMiddleware(authInfoLevel: AuthInfoLevel) {
 
             if (authInfoSerialized == null) {
                 if (mustHaveSession) {
-                    console.log('Expected some auth info but there was none');
+                    req.log.warn('Expected some auth info but there was none');
                     res.status(HttpStatus.BAD_REQUEST);
                     res.end();
                     return;
@@ -63,15 +63,14 @@ export function newAuthInfoMiddleware(authInfoLevel: AuthInfoLevel) {
             try {
                 authInfo = authInfoMarshaller.extract(authInfoSerialized);
             } catch (e) {
-                console.log('Bad auth info');
-                console.log(e);
+                req.log.error(e);
                 res.status(HttpStatus.BAD_REQUEST);
                 res.end();
                 return;
             }
 
             if (mustHaveAuth0AuthToken && authInfo.auth0AccessToken == null) {
-                console.log('Expected auth token but none was had');
+                req.log.warn('Expected auth token but none was had');
                 res.status(HttpStatus.BAD_REQUEST);
                 res.end();
                 return;

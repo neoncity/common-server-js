@@ -14,7 +14,7 @@ export function newCheckXsrfTokenMiddleware(justExtract: boolean = false) {
             const xsrfTokenRaw = req.header(Session.XsrfTokenHeaderName);
             req.xsrfToken = xsrfTokenMarshaller.extract(xsrfTokenRaw);
         } catch (e) {
-            console.log('Bad XSRF token');
+            req.log.warn('Bad XSRF token');
             res.status(HttpStatus.BAD_REQUEST);
             res.end();
             return;
@@ -22,7 +22,7 @@ export function newCheckXsrfTokenMiddleware(justExtract: boolean = false) {
 
         if (!justExtract) {
             if (req.xsrfToken != (req.session as Session).xsrfToken) {
-                console.log('Mismatching XSRF token');
+                req.log.warn('Mismatching XSRF token');
                 res.status(HttpStatus.BAD_REQUEST);
                 res.end();
                 return;

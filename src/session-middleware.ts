@@ -30,14 +30,14 @@ export function newSessionMiddleware(sessionLevel: SessionLevel, identityClient:
     return wrap(async (req: Request, res: express.Response, next: express.NextFunction) => {
         try {
             if (mustHaveSession && req.authInfo == null) {
-                console.log('Must have auth info');
+                req.log.warn('Must have auth info');
                 res.status(HttpStatus.BAD_REQUEST);
                 res.end();
                 return;
             }
 
             if (mustHaveUser && !(req.authInfo != null && req.authInfo.auth0AccessToken != null)) {
-                console.log('Must have auth0 access token');
+                req.log.warn('Must have auth0 access token');
                 res.status(HttpStatus.BAD_REQUEST);
                 res.end();
                 return;
@@ -54,22 +54,18 @@ export function newSessionMiddleware(sessionLevel: SessionLevel, identityClient:
             // TODO: should probably log something here.
             if (mustHaveSession) {
                 if (e.name == 'UnauthorizedIdentityError') {
-                    console.log('Unauthorized user');
                     res.status(HttpStatus.UNAUTHORIZED);
                     res.end();
                     return;
                 }
 
                 if (e.name == 'IdentityError') {
-                    console.log('Identity service error');
                     res.status(HttpStatus.BAD_GATEWAY);
                     res.end();
                     return;
                 }
 
-                console.log(`Identity service error - ${e.toString()}`);
-                console.log(e);
-
+                req.log.error(e);
                 res.status(HttpStatus.INTERNAL_SERVER_ERROR);
                 res.end();
                 return;
