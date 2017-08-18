@@ -1,9 +1,9 @@
 const newBunyanLoggerMiddleware = require('express-bunyan-logger');
 
 
-export function newLogginMiddleware() {
+export function newLogginMiddleware(name: string) {
     return newBunyanLoggerMiddleware({
-        name: 'core',
+        name: name,
         streams: [{
             level: 'info',
             stream: process.stdout
