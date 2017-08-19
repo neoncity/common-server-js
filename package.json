@@ -1,6 +1,6 @@
 {
   "name": "@neoncity/common-server-js",
-  "version": "4.3.1",
+  "version": "4.4.0",
   "description": "Things shared between packages, for server-side work.",
   "author": "NeonCity team",
   "scripts": {
@@ -31,7 +31,7 @@
   "license": "UNLICENSED",
   "dependencies": {
     "@neoncity/common-js": "~1",
-    "@neoncity/identity-sdk-js": "~6",
+    "@neoncity/identity-sdk-js": "~7",
     "@types/bunyan": "=1.8.2",
     "async-middleware": "=1.0.2",
     "bunyan": "=1.8.12",
