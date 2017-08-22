@@ -1,6 +1,7 @@
 export * from './authinfo-middleware'
 export * from './check-origin-middleware'
 export * from './check-xsrftoken-middleware'
+export * from './errors-middleware'
 export * from './internal-web-fetcher'
 export * from './json-content-middleware'
 export * from './logging-middleware'
