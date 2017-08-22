@@ -18,7 +18,7 @@ export function newLoggingMiddleware(name: string, env: Env, logglyToken: string
 
     if (isOnServer(env)) {
         if (logglyToken == null || logglySubdomain == null) {
-            throw new Error('In Staging and Prod Bunyan logging must be configured');
+            throw new Error('In Staging and Prod Loggly logging must be configured');
         }
 
         const logglyConfig = {
