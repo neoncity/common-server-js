@@ -4,8 +4,8 @@ const newBunyanLoggerMiddleware = require('express-bunyan-logger');
 const Bunyan2Loggly = require('bunyan-loggly');
 
 
-const BUNYAN_BUFFER_SIZE = 10;
-const BUNYAN_TIMEOUT_MS = 1000;
+const LOGGLY_BUFFER_SIZE = 10;
+const LOGGLY_TIMEOUT_MS = 1000;
 
 
 export function newLoggingMiddleware(name: string, env: Env, logglyToken: string|null = null, logglySubdomain: string|null = null) {
@@ -29,7 +29,7 @@ export function newLoggingMiddleware(name: string, env: Env, logglyToken: string
         streams.push({
             level: 'info',
             type: 'raw',
-            stream: new Bunyan2Loggly(logglyConfig, BUNYAN_BUFFER_SIZE, BUNYAN_TIMEOUT_MS)
+            stream: new Bunyan2Loggly(logglyConfig, LOGGLY_BUFFER_SIZE, LOGGLY_TIMEOUT_MS)
         });
     }
 
