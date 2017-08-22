@@ -6,10 +6,6 @@ import { Env, isOnServer, envToString } from '@neoncity/common-js'
 import { Request } from './request'
 
 
-const ROLLBAR_ITEMS_PER_MINUTE = 60;
-const ROLLBAR_MAX_ITEMS = 0;
-
-
 export function newErrorsMiddleware(name: string, env: Env, rollbarToken: string|null = null) {
     if (isOnServer(env) && rollbarToken == null) {
         throw new Error('In Staging and Prod Rollbar error logging must be configured');
@@ -22,8 +18,6 @@ export function newErrorsMiddleware(name: string, env: Env, rollbarToken: string
         captureUncaught: true,
         captureUnhandledRejections: true,
         enabled: isOnServer(env),
-        itemsPerMinute: ROLLBAR_ITEMS_PER_MINUTE,
-        maxItems: ROLLBAR_MAX_ITEMS,
         payload: {
             // TODO: fill in the person field!
             serviceName: name,
