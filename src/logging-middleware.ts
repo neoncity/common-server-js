@@ -1,4 +1,4 @@
-import { Env } from '@neoncity/common-js'
+import { Env, envToString, isOnServer } from '@neoncity/common-js'
 
 const newBunyanLoggerMiddleware = require('express-bunyan-logger');
 const Bunyan2Loggly = require('bunyan-loggly');
@@ -16,7 +16,7 @@ export function newLoggingMiddleware(name: string, env: Env, logglyToken: string
         stream: process.stdout
     });
 
-    if (env == Env.Staging || env == Env.Prod) {
+    if (isOnServer(env)) {
         if (logglyToken == null || logglySubdomain == null) {
             throw new Error('In Staging and Prod Bunyan logging must be configured');
         }
@@ -38,7 +38,7 @@ export function newLoggingMiddleware(name: string, env: Env, logglyToken: string
         streams: streams,
         neoncity: {
             serviceName: name,
-            env: env.toString()
+            env: envToString(env)
         }
     });
 }
